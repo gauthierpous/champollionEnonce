@@ -36,5 +36,37 @@ public class ChampollionJUnitTest {
                          "L'enseignant doit maintenant avoir 30 heures prévues pour l'UE 'uml'");		
 		
 	}
+        
+        @Test
+        public void testAjouteHeuresCM() {
+                //6 CM pour UML
+                untel.ajouteEnseignement(uml, 6, 0, 0);
+                //9 car 6*1.5
+                assertEquals(9, untel.heuresPrevuesPourUE(uml),
+                        "L'enseignant doit maintenant avoir 9 heures prévues pour l'UE 'uml'");
+        }
+        
+        @Test
+        public void testAjouteHeuresTP() {
+                //16 TP pour java
+                untel.ajouteEnseignement(java, 0, 0, 16);
+                //12 car 16*0.75
+                assertEquals(12, untel.heuresPrevuesPourUE(java),
+                        "L'enseignant doit maintenant avoir 15 heures prévues pour l'UE 'uml'");
+        }
 	
+        @Test
+        public void testEnSousService() {
+            untel.ajouteEnseignement(uml, 0, 10, 0);
+            assertEquals(true, untel.enSousService(), "L'enseignant doit être en sous-service car il n'a pas 192 heures équivalent TD (ici il en a 10)");
+            untel.ajouteEnseignement(uml, 0, 182, 0);
+            assertEquals(false, untel.enSousService(), "L'enseignant n'est pas en sous-service car il a au moins 192 heures équivalent TD (ici il en a 192)");
+            untel.ajouteEnseignement(uml, 0, 10, 0);
+            assertEquals(false, untel.enSousService(), "L'enseignant n'est pas en sous-service car il a au moins 192 heures équivalent TD (ici il en a 202)");
+        }
+        
+        @Test
+        public void testHeuresPlanifiees(){
+            
+        }
 }
