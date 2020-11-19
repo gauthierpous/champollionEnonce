@@ -3,7 +3,8 @@ package champollion;
 public class Enseignant extends Personne {
 
     // TODO : rajouter les autres méthodes présentes dans le diagramme UML
-
+    private Intervention e;
+    
     public Enseignant(String nom, String email) {
         super(nom, email);
     }
@@ -47,5 +48,18 @@ public class Enseignant extends Personne {
         // TODO: Implémenter cette méthode
         throw new UnsupportedOperationException("Pas encore implémenté");
     }
+    
+    public ajouteIntervention(Intervention e){
+        
+    }
+    
+    public int heuresPlanifiees(){
+        
+    }
+    
+    public boolean enSousService(){
+        
+    } 
+    
 
 }
