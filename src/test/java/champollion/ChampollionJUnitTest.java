@@ -1,5 +1,6 @@
 package champollion;
 
+import java.util.Date;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -66,7 +67,12 @@ public class ChampollionJUnitTest {
         }
         
         @Test
-        public void testHeuresPlanifiees(){
-            
+        public void testHeuresPlanifiee(){
+            Salle s = new Salle("10", 30);
+            Intervention e = new Intervention(s, java, untel, TypeIntervention.TD, new Date(), 2);
+            //Ajout d'une intervention
+            untel.ajouteIntervention(e);
+            //Vérification
+            assertEquals(2, untel.heuresPlanifiees(), "L'enseignant doit réaliser 2h");
         }
 }
