@@ -75,4 +75,17 @@ public class ChampollionJUnitTest {
             //Vérification
             assertEquals(2, untel.heuresPlanifiees(), "L'enseignant doit réaliser 2h");
         }
+        
+        @Test
+        public void testHeuresPrevues(){
+            //Ajoute deux enseignements différent(un de java et l'autre d'UML) dans le service prévu
+            untel.ajouteEnseignement(uml, 6, 10, 16);
+            untel.ajouteEnseignement(java, 4, 6, 8);
+            //(6+4)*1.5 = 15
+            //(10+6)*1 = 16
+            //(16+8)*0.75 = 18
+            //15 + 16 + 18 = 49
+            assertEquals(49, untel.heuresPrevues(), "L'enseignant doit avoir 49h de prévu");
+            
+        }
 }
